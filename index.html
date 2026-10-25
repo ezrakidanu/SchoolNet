@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#39735b">
+  <meta name="description" content="SchoolNet brings school announcements, staff updates, and community moments together in one friendly place.">
+  <title>SchoolNet · Your school, connected</title>
+  <link rel="icon" type="image/svg+xml" href="/static/images/logo.svg">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script type="module" src="/static/js/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="SchoolNet home"><img src="/static/images/logo.svg" alt="" width="36" height="36"><span>SchoolNet<span class="brand-dot">.</span></span></a>
+    <div class="school-label"><span class="school-symbol" data-icon="school"></span><div>Greenwood Academy<small>One school. One community.</small></div></div>
+    <nav class="main-nav">
+      <button class="nav-item active" data-view="feed"><span data-icon="home"></span>Community feed<span class="nav-count" id="feed-count">4</span></button>
+      <button class="nav-item" data-view="saved"><span data-icon="bookmark"></span>Saved posts</button>
+      <button class="nav-item" data-view="people"><span data-icon="users"></span>People</button>
+      <button class="nav-item" data-view="calendar"><span data-icon="calendar"></span>School calendar</button>
+    </nav>
+    <div class="space-heading">YOUR SPACES <span data-icon="layers"></span></div>
+    <nav class="spaces-nav" aria-label="Community spaces">
+      <button data-space="General"><span class="space-dot sage"></span>School announcements</button>
+      <button data-space="Clubs"><span class="space-dot violet"></span>Science Club</button>
+      <button data-space="Sports"><span class="space-dot orange"></span>Sports community</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="connected-note"><span class="online-dot"></span>A little closer, every day.</div>
+      <button class="account-button" id="account-button"><span class="avatar account-avatar">SN</span><span id="account-label">Community reader<small>Browse your school</small></span><span data-icon="chevron-down"></span></button>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <a class="mobile-brand" href="/" aria-label="SchoolNet home"><img src="/static/images/logo.svg" width="31" height="31" alt=""><span>SchoolNet.</span></a>
+      <div class="breadcrumb"><span id="breadcrumb-title">Community feed</span><span class="header-divider"></span><span class="school-badge">Greenwood Academy</span></div>
+      <div class="topbar-actions">
+        <label class="search-box"><span data-icon="search"></span><input id="search-input" type="search" placeholder="Search your community" aria-label="Search announcements and people"><kbd>/</kbd></label>
+        <button class="icon-button notification-button" id="notifications-button" aria-label="View recent announcements"><span data-icon="bell"></span><span class="notification-dot"></span></button>
+        <button class="avatar top-avatar" id="top-account-button" aria-label="Account and staff sign in">SN</button>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <section class="welcome-heading">
+        <div><p class="eyebrow">YOUR SCHOOL, CONNECTED</p><h1 id="page-title">A good day to stay connected.</h1><p id="page-subtitle">The latest news, little wins, and everything in between.</p></div>
+        <div class="today-label"><span data-icon="sun"></span><span id="today-date"></span></div>
+      </section>
+      <div class="content-columns">
+        <main id="main-content">
+          <div class="feed-toolbar" id="feed-toolbar"><div class="filter-tabs" aria-label="Filter announcements"><button class="filter-tab active" data-category="All">All updates <span id="all-count">4</span></button><button class="filter-tab" data-category="Academics">Academics</button><button class="filter-tab" data-category="Clubs">Clubs</button><button class="filter-tab" data-category="Sports">Sports</button></div><button class="sort-button" id="sort-button" aria-label="Toggle latest or oldest first"><span data-icon="sliders"></span><span id="sort-label">Latest</span></button></div>
+          <section class="quick-composer" id="quick-composer" aria-label="Create an announcement"><div class="composer-prompt"><span class="avatar compose-avatar" id="compose-avatar">SN</span><button id="compose-prompt">Something to share with your school?</button><span class="little-spark" data-icon="sparkles"></span></div><div class="composer-bottom"><span class="composer-kind"><span data-icon="megaphone"></span>Announcement</span><button class="primary-button" id="create-button"><span data-icon="plus"></span>Create post</button></div></section>
+          <div class="results-label" id="results-label" hidden></div>
+          <div id="feed-list" class="feed-list" aria-live="polite"><div class="loading-state"><span class="loader"></span>Bringing your community together…</div></div>
+          <p class="feed-end" id="feed-end" hidden><span data-icon="check-circle"></span>You're all caught up. A good place to be.</p>
+        </main>
+        <aside class="community-rail" aria-label="Community and upcoming events">
+          <section class="rail-card community-card"><div class="rail-heading"><h2>Your community</h2><span class="small-tag">STAFF</span></div><p class="rail-description">The people behind the possibilities.</p><div id="staff-preview" class="staff-list"></div><button class="text-link staff-link" data-view="people">Meet your school team <span data-icon="arrow-right"></span></button></section>
+          <section class="rail-card events-card"><div class="rail-heading"><h2>Coming up</h2><span data-icon="calendar"></span></div><div id="events-preview" class="events-list"></div><button class="text-link" data-view="calendar">View school calendar <span data-icon="arrow-right"></span></button></section>
+          <section class="community-message"><div class="message-icon" data-icon="heart-hand"></div><span class="tiny-eyebrow">BETTER, TOGETHER</span><h3>A school is more<br>than a place.</h3><p>It's the people, the shared moments,<br>and the connections we make.</p><div class="community-stat"><span class="member-dots"><i>G</i><i>W</i><i>A</i></span><span><strong id="member-count">248</strong> community members</span></div></section>
+          <footer class="rail-footer"><button data-about="about">About SchoolNet</button><span>·</span><button data-about="guidelines">Community guidelines</button><p>Made for the moments that matter.</p></footer>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-view="feed"><span data-icon="home"></span>Feed</button><button data-view="saved"><span data-icon="bookmark"></span>Saved</button><button class="mobile-create" id="mobile-create-button" aria-label="Create announcement"><span data-icon="plus"></span></button><button data-view="people"><span data-icon="users"></span>People</button><button data-view="calendar"><span data-icon="calendar"></span>Calendar</button></nav>
+
+  <dialog id="composer-dialog" class="modal composer-modal">
+    <div class="modal-heading"><div><p class="eyebrow">LET YOUR SCHOOL KNOW</p><h2>Create an announcement</h2></div><button class="icon-button" data-close aria-label="Close announcement form"><span data-icon="x"></span></button></div>
+    <form id="post-form">
+      <div class="author-select-row"><span class="avatar" id="selected-author-avatar">MA</span><label>Publishing as<select id="profile-select" name="profile_id" required aria-label="Staff author"></select></label><span class="verified-mark" data-icon="check-circle"></span></div>
+      <label class="field-label" for="category-select">Space</label><select class="form-control" id="category-select" name="category"><option>General</option><option>Academics</option><option>Clubs</option><option>Sports</option></select>
+      <div class="field-heading"><label class="field-label" for="post-title">Give it a title</label><span id="title-counter">0 / 120</span></div><input class="form-control" id="post-title" name="title" placeholder="A little news worth sharing…" minlength="3" maxlength="120" required>
+      <div class="field-heading"><label class="field-label" for="post-content">What's the update?</label><span id="content-counter">0 / 3000</span></div><textarea class="form-control" id="post-content" name="content" placeholder="Share the details with your community." rows="6" minlength="10" maxlength="3000" required></textarea>
+      <p class="form-error" id="post-error" role="alert" hidden></p><div class="modal-footer"><span><span data-icon="globe"></span>Visible to your school community</span><button class="primary-button" id="publish-button" type="submit"><span data-icon="send"></span>Publish announcement</button></div>
+    </form>
+  </dialog>
+  <dialog id="detail-dialog" class="modal detail-modal"><div class="modal-heading"><h2 id="detail-title">SchoolNet</h2><button class="icon-button" data-close aria-label="Close details"><span data-icon="x"></span></button></div><div id="detail-content"></div></dialog>
+  <dialog id="auth-dialog" class="modal auth-modal"><div class="modal-heading"><div><p class="eyebrow">A VOICE FOR YOUR SCHOOL</p><h2 id="auth-title">Staff publishing access</h2></div><button class="icon-button" data-close aria-label="Close access form"><span data-icon="x"></span></button></div><div id="auth-content"></div></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <noscript><div class="noscript-notice">SchoolNet needs JavaScript to show the community feed and publish announcements. Please enable JavaScript in your browser.</div></noscript>
+</body>
+</html>
